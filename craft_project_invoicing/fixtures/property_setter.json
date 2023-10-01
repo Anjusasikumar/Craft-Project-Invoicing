@@ -1,0 +1,34 @@
+[
+    {
+     "default_value": null,
+     "doc_type": "Journal Entry Account",
+     "docstatus": 0,
+     "doctype": "Property Setter",
+     "doctype_or_field": "DocField",
+     "field_name": "reference_type",
+     "is_system_generated": 0,
+     "modified": "2023-03-12 19:13:57.747777",
+     "module": null,
+     "name": "Journal Entry Account-reference_type-options",
+     "property": "options",
+     "property_type": "Text",
+     "row_name": null,
+     "value": "\nSales Invoice\nPurchase Invoice\nJournal Entry\nSales Order\nPurchase Order\nExpense Claim\nAsset\nLoan\nPayroll Entry\nEmployee Advance\nExchange Rate Revaluation\nInvoice Discounting\nFees\nFull and Final Statement\nPayment Application"
+    },
+    {
+     "default_value": null,
+     "doc_type": "Sales Order",
+     "docstatus": 0,
+     "doctype": "Property Setter",
+     "doctype_or_field": "DocField",
+     "field_name": "payment_terms_template",
+     "is_system_generated": 0,
+     "modified": "2023-06-11 22:06:17.232303",
+     "module": null,
+     "name": "Sales Order-payment_terms_template-mandatory_depends_on",
+     "property": "mandatory_depends_on",
+     "property_type": "Data",
+     "row_name": null,
+     "value": "eval: doc.enable_project_invoicing == 1;"
+    }
+   ]

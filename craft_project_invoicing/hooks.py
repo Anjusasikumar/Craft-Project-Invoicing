@@ -9,7 +9,64 @@ app_license = "MIT"
 
 # Includes in <head>
 # ------------------
+fixtures = [
+	{
+		"dt": "Custom Field",
+		"filters": [
+			["name", "in",
+			
+				# Sales Invoice
+                "Sales Invoice-ref_journal_entry",
+                "Sales Invoice-sales_order",
+                "Sales Invoice-custom_invoice_percentage",
+                "Sales Order-custom_order_invoicing_type",
+                "Sales Invoice-custom_sales_order_type",
 
+                # Sales Invoice Item
+                "Sales Invoice Item-custom_so_qty",
+
+                # Sales Order
+                "Sales Order-consumed_advance",
+                "Sales Order-consumed_retention",
+                "Sales Order-custom_section_break_jslmq",
+                "Sales Order-enable_project_invoicing",
+                "Sales Order-section_break_kyki6",
+                "Sales Order-section_break_gxjur",
+                "Sales Order-advance_percentage",
+                "Sales Order-on_delivery_percentage",
+                "Sales Order-column_break_mdvgl",
+                "Sales Order-retention_percentage",
+                "Sales Order-advance_billed_amount",
+                "Sales Order-retention_billed_amount",
+                "Sales Order-delivery_billed_amount",
+                "Sales Order-advance_billed",
+                "Sales Order-on_delivery_billed",
+                "Sales Order-retention_billed",
+                "Sales Order-advance_ref_doc",
+                "Sales Order-delivery_ref_doc",
+                "Sales Order-retention_ref_doc",
+
+                 # Company
+                "Company-project_invoicing_configuration",
+                "Company-project_invoicing_tax_template",
+                # Sales Taxes and Charges
+                "Sales Taxes and Charges-is_advance",
+                "Sales Taxes and Charges-is_retention",
+			]
+		]
+	},
+	# {
+	# 	"dt": "Property Setter",
+	# 	"filters": [
+	# 		["name", "in",
+	# 		[
+	# 			# Journal Entry Account
+	# 			"Journal Entry Account-reference_type-options",
+	# 		]
+	# 		]
+	# 	]
+	# },
+]
 # include js, css files in header of desk.html
 # app_include_css = "/assets/craft_project_invoicing/css/craft_project_invoicing.css"
 # app_include_js = "/assets/craft_project_invoicing/js/craft_project_invoicing.js"
@@ -29,7 +86,10 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+    "Sales Invoice" : "public/js/sales_invoice.js",
+    "Sales Order" : "public/js/sales_order.js"
+    }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -118,13 +178,13 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Sales Order": {
+		"validate": "craft_project_invoicing.events.sales_order.validate",
+		# "on_cancel": "method",
+		# "on_trash": "method"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
