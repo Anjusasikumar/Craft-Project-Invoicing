@@ -13,3 +13,5 @@ def setup_item():
 			item_doc.item_code = item
 			item_doc.item_group = "Services"
 			item_doc.save()
+
+	frappe.db.set_value("UOM", "Nos", "must_be_whole_number", 0)

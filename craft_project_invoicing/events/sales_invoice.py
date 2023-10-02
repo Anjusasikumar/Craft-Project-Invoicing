@@ -44,7 +44,7 @@ def on_submit(doc, method):
 					ge_doc.insert(ignore_permissions=True,
 								  ignore_mandatory=True)
 					ge_doc.submit()
-					doc.db_set("metallic_ref_journal_entry", ge_doc.name)
+					doc.db_set("ref_journal_entry", ge_doc.name)
 
 				so_doc.db_set({
 					"advance_billed": 1,
@@ -86,7 +86,7 @@ def on_submit(doc, method):
 					ge_doc.insert(ignore_permissions=True,
 								  ignore_mandatory=True)
 					ge_doc.submit()
-					doc.db_set("metallic_ref_journal_entry", ge_doc.name)
+					doc.db_set("ref_journal_entry", ge_doc.name)
 
 				so_doc.db_set({
 					"retention_billed": 1,
@@ -143,8 +143,8 @@ def on_cancel(doc, method):
 		"Retention": "retention_billed_amount",
 		"Delivery": "delivery_billed_amount"
 	}
-	if doc.metallic_ref_journal_entry:
-		jv_doc_list = doc.metallic_ref_journal_entry.split(", ")
+	if doc.ref_journal_entry:
+		jv_doc_list = doc.ref_journal_entry.split(", ")
 		for j in jv_doc_list:
 			jv_doc = frappe.get_doc("Journal Entry", j)
 			jv_doc.cancel()
