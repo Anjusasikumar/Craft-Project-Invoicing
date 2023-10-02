@@ -1,4 +1,9 @@
 frappe.ui.form.on('Sales Order', {
+	custom_order_invoicing_type: function (frm) {
+		if (frm.doc.custom_order_invoicing_type && frm.doc.custom_order_invoicing_type == "Project Invoicing") {
+		    frm.set_value("enable_project_invoicing", 1);
+		}
+	},
     advance_percentage: function (frm) {
 		if (frm.doc.advance_percentage) {
 		    frm.set_value("on_delivery_percentage", (100 - (frm.doc.advance_percentage + parseFloat(frm.doc.retention_percentage))));

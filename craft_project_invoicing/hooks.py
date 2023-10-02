@@ -26,6 +26,7 @@ fixtures = [
 
                 # Sales Order
                 "Sales Order-custom_order_invoicing_type",
+                "Sales Order-custom_section_break_sfox3",
                 "Sales Order-consumed_advance",
                 "Sales Order-consumed_retention",
                 "Sales Order-custom_section_break_jslmq",
