@@ -14,18 +14,18 @@ fixtures = [
 		"dt": "Custom Field",
 		"filters": [
 			["name", "in",
-			
+                (
 				# Sales Invoice
                 "Sales Invoice-ref_journal_entry",
                 "Sales Invoice-sales_order",
                 "Sales Invoice-custom_invoice_percentage",
-                "Sales Order-custom_order_invoicing_type",
                 "Sales Invoice-custom_sales_order_type",
 
                 # Sales Invoice Item
                 "Sales Invoice Item-custom_so_qty",
 
                 # Sales Order
+                "Sales Order-custom_order_invoicing_type",
                 "Sales Order-consumed_advance",
                 "Sales Order-consumed_retention",
                 "Sales Order-custom_section_break_jslmq",
@@ -52,6 +52,7 @@ fixtures = [
                 # Sales Taxes and Charges
                 "Sales Taxes and Charges-is_advance",
                 "Sales Taxes and Charges-is_retention",
+                )
 			]
 		]
 	},
