@@ -14,47 +14,47 @@ fixtures = [
 		"dt": "Custom Field",
 		"filters": [
 			["name", "in",
-                (
-				# Sales Invoice
-                "Sales Invoice-ref_journal_entry",
-                "Sales Invoice-sales_order",
-                "Sales Invoice-custom_invoice_percentage",
-                "Sales Invoice-custom_sales_order_type",
+					 (
+						 # Sales Invoice
+						 "Sales Invoice-ref_journal_entry",
+						 "Sales Invoice-sales_order",
+						 "Sales Invoice-custom_invoice_percentage",
+						 "Sales Invoice-custom_sales_order_type",
 
-                # Sales Invoice Item
-                "Sales Invoice Item-custom_so_qty",
+						 # Sales Invoice Item
+						 "Sales Invoice Item-custom_so_qty",
 
-                # Sales Order
-                "Sales Order-custom_order_invoicing_type",
-                "Sales Order-custom_section_break_sfox3",
-                "Sales Order-consumed_advance",
-                "Sales Order-consumed_retention",
-                "Sales Order-custom_section_break_jslmq",
-                "Sales Order-enable_project_invoicing",
-                "Sales Order-section_break_kyki6",
-                "Sales Order-section_break_gxjur",
-                "Sales Order-advance_percentage",
-                "Sales Order-on_delivery_percentage",
-                "Sales Order-column_break_mdvgl",
-                "Sales Order-retention_percentage",
-                "Sales Order-advance_billed_amount",
-                "Sales Order-retention_billed_amount",
-                "Sales Order-delivery_billed_amount",
-                "Sales Order-advance_billed",
-                "Sales Order-on_delivery_billed",
-                "Sales Order-retention_billed",
-                "Sales Order-advance_ref_doc",
-                "Sales Order-delivery_ref_doc",
-                "Sales Order-retention_ref_doc",
+						 # Sales Order
+						 "Sales Order-custom_order_invoicing_type",
+						 "Sales Order-custom_section_break_sfox3",
+						 "Sales Order-consumed_advance",
+						 "Sales Order-consumed_retention",
+						 "Sales Order-custom_section_break_jslmq",
+						 "Sales Order-enable_project_invoicing",
+						 "Sales Order-section_break_kyki6",
+						 "Sales Order-section_break_gxjur",
+						 "Sales Order-advance_percentage",
+						 "Sales Order-on_delivery_percentage",
+						 "Sales Order-column_break_mdvgl",
+						 "Sales Order-retention_percentage",
+						 "Sales Order-advance_billed_amount",
+						 "Sales Order-retention_billed_amount",
+						 "Sales Order-delivery_billed_amount",
+						 "Sales Order-advance_billed",
+						 "Sales Order-on_delivery_billed",
+						 "Sales Order-retention_billed",
+						 "Sales Order-advance_ref_doc",
+						 "Sales Order-delivery_ref_doc",
+						 "Sales Order-retention_ref_doc",
 
-                 # Company
-                "Company-project_invoicing_configuration",
-                "Company-project_invoicing_tax_template",
-                # Sales Taxes and Charges
-                "Sales Taxes and Charges-is_advance",
-                "Sales Taxes and Charges-is_retention",
-                )
-			]
+						 # Company
+						 "Company-project_invoicing_configuration",
+						 "Company-project_invoicing_tax_template",
+						 # Sales Taxes and Charges
+						 "Sales Taxes and Charges-is_advance",
+						 "Sales Taxes and Charges-is_retention",
+					 )
+			 ]
 		]
 	},
 	# {
@@ -89,9 +89,9 @@ fixtures = [
 
 # include js in doctype views
 doctype_js = {
-    "Sales Invoice" : "public/js/sales_invoice.js",
-    "Sales Order" : "public/js/sales_order.js"
-    }
+	"Sales Invoice": "public/js/sales_invoice.js",
+	"Sales Order": "public/js/sales_order.js"
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -104,7 +104,7 @@ doctype_js = {
 
 # website user home page (by Role)
 # role_home_page = {
-#	"Role": "home_page"
+# "Role": "home_page"
 # }
 
 # Generators
@@ -118,13 +118,13 @@ doctype_js = {
 
 # add methods and filters to jinja environment
 # jinja = {
-#	"methods": "craft_project_invoicing.utils.jinja_methods",
-#	"filters": "craft_project_invoicing.utils.jinja_filters"
+# "methods": "craft_project_invoicing.utils.jinja_methods",
+# "filters": "craft_project_invoicing.utils.jinja_filters"
 # }
 
 # Installation
 # ------------
-
+after_install = "craft_project_invoicing.setup.install.after_install"
 # before_install = "craft_project_invoicing.install.before_install"
 # after_install = "craft_project_invoicing.install.after_install"
 
@@ -161,11 +161,11 @@ doctype_js = {
 # Permissions evaluated in scripted ways
 
 # permission_query_conditions = {
-#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
+# "Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
 #
 # has_permission = {
-#	"Event": "frappe.desk.doctype.event.event.has_permission",
+# "Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
 # DocType Class
@@ -173,7 +173,7 @@ doctype_js = {
 # Override standard doctype classes
 
 # override_doctype_class = {
-#	"ToDo": "custom_app.overrides.CustomToDo"
+# "ToDo": "custom_app.overrides.CustomToDo"
 # }
 
 # Document Events
@@ -183,8 +183,10 @@ doctype_js = {
 doc_events = {
 	"Sales Order": {
 		"validate": "craft_project_invoicing.events.sales_order.validate",
-		# "on_cancel": "method",
-		# "on_trash": "method"
+	},
+	"Sales Invoice": {
+		"on_submit": "craft_project_invoicing.events.sales_invoice.on_submit",
+		"on_cancel": "craft_project_invoicing.events.sales_invoice.on_cancel",
 	}
 }
 
@@ -192,21 +194,21 @@ doc_events = {
 # ---------------
 
 # scheduler_events = {
-#	"all": [
-#		"craft_project_invoicing.tasks.all"
-#	],
-#	"daily": [
-#		"craft_project_invoicing.tasks.daily"
-#	],
-#	"hourly": [
-#		"craft_project_invoicing.tasks.hourly"
-#	],
-#	"weekly": [
-#		"craft_project_invoicing.tasks.weekly"
-#	],
-#	"monthly": [
-#		"craft_project_invoicing.tasks.monthly"
-#	],
+# "all": [
+# "craft_project_invoicing.tasks.all"
+# ],
+# "daily": [
+# "craft_project_invoicing.tasks.daily"
+# ],
+# "hourly": [
+# "craft_project_invoicing.tasks.hourly"
+# ],
+# "weekly": [
+# "craft_project_invoicing.tasks.weekly"
+# ],
+# "monthly": [
+# "craft_project_invoicing.tasks.monthly"
+# ],
 # }
 
 # Testing
@@ -218,14 +220,14 @@ doc_events = {
 # ------------------------------
 #
 # override_whitelisted_methods = {
-#	"frappe.desk.doctype.event.event.get_events": "craft_project_invoicing.event.get_events"
+# "frappe.desk.doctype.event.event.get_events": "craft_project_invoicing.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-#	"Task": "craft_project_invoicing.task.get_dashboard_data"
+# "Task": "craft_project_invoicing.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -251,29 +253,29 @@ doc_events = {
 # --------------------
 
 # user_data_fields = [
-#	{
-#		"doctype": "{doctype_1}",
-#		"filter_by": "{filter_by}",
-#		"redact_fields": ["{field_1}", "{field_2}"],
-#		"partial": 1,
-#	},
-#	{
-#		"doctype": "{doctype_2}",
-#		"filter_by": "{filter_by}",
-#		"partial": 1,
-#	},
-#	{
-#		"doctype": "{doctype_3}",
-#		"strict": False,
-#	},
-#	{
-#		"doctype": "{doctype_4}"
-#	}
+# {
+# "doctype": "{doctype_1}",
+# "filter_by": "{filter_by}",
+# "redact_fields": ["{field_1}", "{field_2}"],
+# "partial": 1,
+# },
+# {
+# "doctype": "{doctype_2}",
+# "filter_by": "{filter_by}",
+# "partial": 1,
+# },
+# {
+# "doctype": "{doctype_3}",
+# "strict": False,
+# },
+# {
+# "doctype": "{doctype_4}"
+# }
 # ]
 
 # Authentication and authorization
 # --------------------------------
 
 # auth_hooks = [
-#	"craft_project_invoicing.auth.validate"
+# "craft_project_invoicing.auth.validate"
 # ]
